@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     [SerializeField] float thrusterForce = 1f;
-    [SerializeField] float rotateForce = 1f;
+    [SerializeField] float rotateForce = 1f * Time.deltaTime;
 
 
 
@@ -32,7 +32,7 @@ public class Rocket : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             
-            transform.Rotate(Vector3.forward, rotateForce); 
+            transform.Rotate(Vector3.forward, rotateForce);
         }
         else if (Input.GetKey(KeyCode.D))
         {
