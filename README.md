@@ -11,3 +11,5 @@
 * Section 3: 43. Physics and Rigidbodies. (Changed from velocity to relativeForce on thrust).
 
 * Section 3: 45. Using Time.deltaTime. (multiplied rotateForce by deltaTime).
+
+* Section 3: 46. Adding A Touch of Audio.

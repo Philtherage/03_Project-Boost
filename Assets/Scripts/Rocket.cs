@@ -10,11 +10,13 @@ public class Rocket : MonoBehaviour
 
 
     Rigidbody rigidBody;
+    AudioSource rocketThrustSFX;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        rocketThrustSFX = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,15 @@ public class Rocket : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            rigidBody.AddRelativeForce(Vector3.up * thrusterForce); 
+            rigidBody.AddRelativeForce(Vector3.up * thrusterForce);
+            if (!rocketThrustSFX.isPlaying)
+            {
+                rocketThrustSFX.Play();
+            }
+        }
+        else
+        {
+            rocketThrustSFX.Stop();
         }
         if (Input.GetKey(KeyCode.A))
         {
@@ -39,5 +49,7 @@ public class Rocket : MonoBehaviour
             transform.Rotate(Vector3.forward, -rotateForce * Time.deltaTime);
             
         }
+        
     }
+
 }
