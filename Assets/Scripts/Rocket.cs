@@ -7,10 +7,14 @@ public class Rocket : MonoBehaviour
     [SerializeField] float thrusterForce = 1f;
     [SerializeField] float rotateForce = 1f;
 
+
+
+    Rigidbody rigidBody;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -23,16 +27,16 @@ public class Rocket : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            GetComponent<Rigidbody>().velocity = new Vector3(0f, thrusterForce, 0f);
+            rigidBody.AddRelativeForce(Vector3.up * thrusterForce); 
         }
         if (Input.GetKey(KeyCode.A))
         {
             
-            transform.Rotate(Vector3.forward, -rotateForce); 
+            transform.Rotate(Vector3.forward, rotateForce); 
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.forward, rotateForce);
+            transform.Rotate(Vector3.forward, -rotateForce);
             
         }
     }
