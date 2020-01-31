@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aeaa58396c6884596f584fb067208f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrusterForce: 10
+  thrusterForce: 15
   rotateForce: 100
 --- !u!1 &3874287735187292302
 GameObject:

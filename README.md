@@ -19,3 +19,7 @@
 * Section 3: 49. Using SerializeField vs Public.
 
 * Section 3: 50. Tagging Game Objects As Friendly.
+
+* Section 3: 51. Basic Level Design.
+
+* Section 3: 53. Making A Secound Level. (Added LevelLoader and FinshLevel Scripts, loading next scene based on buildindex)
