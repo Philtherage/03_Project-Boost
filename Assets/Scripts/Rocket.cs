@@ -10,6 +10,7 @@ public class Rocket : MonoBehaviour
    
     const string COLLISION_TAG_FRIENDLY = "Friendly";
     const string COLLISION_TAG_FUEL = "Fuel";
+    const string COLLISION_TAG_FINISH = "Finish";
 
     bool isThrusting;
 
@@ -41,6 +42,9 @@ public class Rocket : MonoBehaviour
 
             case COLLISION_TAG_FUEL:
                 Debug.Log("Fuel");
+                break;
+            case COLLISION_TAG_FINISH:
+                FindObjectOfType<LevelLoader>().LoadNextScene();
                 break;
             
             default:

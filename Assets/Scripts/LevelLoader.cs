@@ -30,6 +30,6 @@ public class LevelLoader : MonoBehaviour
     IEnumerator LoadDelay()
     {
         yield return new WaitForSeconds(levelLoadDelay);
-        SceneManager.LoadScene(currentSceneIndex++);
+        SceneManager.LoadScene(currentSceneIndex += 1);
     }
 }
