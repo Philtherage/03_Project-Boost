@@ -12,4 +12,6 @@
 
 * Section 3: 45. Using Time.deltaTime. (multiplied rotateForce by deltaTime).
 
-* Section 3: 46. Adding A Touch of Audio.
+* Section 3: 47. Adding A Touch of Audio.
+
+* Section 3: 48. Resolving Movement Bugs. (Also Refactored Thrust Audio).
