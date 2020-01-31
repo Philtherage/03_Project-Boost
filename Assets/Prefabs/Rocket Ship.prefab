@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrusterForce: 10
-  rotateForce: 50
+  rotateForce: 100
 --- !u!1 &3874287735187292302
 GameObject:
   m_ObjectHideFlags: 0

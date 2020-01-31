@@ -15,3 +15,5 @@
 * Section 3: 47. Adding A Touch of Audio.
 
 * Section 3: 48. Resolving Movement Bugs. (Also Refactored Thrust Audio).
+
+* Section 3: 49. Using SerializeField vs Public.
