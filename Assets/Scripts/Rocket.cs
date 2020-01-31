@@ -7,6 +7,10 @@ public class Rocket : MonoBehaviour
     [SerializeField] float thrusterForce = 1f;
     [SerializeField] float rotateForce = 1f;
 
+   
+    const string COLLISION_TAG_FRIENDLY = "Friendly";
+    const string COLLISION_TAG_FUEL = "Fuel";
+
     bool isThrusting;
 
     Rigidbody rigidBody;
@@ -25,6 +29,24 @@ public class Rocket : MonoBehaviour
         Rotate();
         Thrust();
         PlayThrustSFX();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case COLLISION_TAG_FRIENDLY:
+                Debug.Log("Ok");
+                break;
+
+            case COLLISION_TAG_FUEL:
+                Debug.Log("Fuel");
+                break;
+            
+            default:
+                Debug.Log("Dead");
+                break;
+        }
     }
 
     private void Rotate()

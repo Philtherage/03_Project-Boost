@@ -17,3 +17,5 @@
 * Section 3: 48. Resolving Movement Bugs. (Also Refactored Thrust Audio).
 
 * Section 3: 49. Using SerializeField vs Public.
+
+* Section 3: 50. Tagging Game Objects As Friendly.
