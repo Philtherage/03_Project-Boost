@@ -24,4 +24,6 @@
 
 * Section 3: 53. Making A Secound Level. (Added LevelLoader and FinshLevel Scripts, loading next scene based on buildindex).
 
-* Section 3: 54. Prefabs in Detail. (changed my collision check for finish level to the player, so finshlevel script was obsolete).
+* Section 3: 54. Prefabs in Detail. (changed my collision check for finish level to the rocket, so finshlevel script was obsolete).
+
+* Section 3: 55. Level Loading & Scene Management.

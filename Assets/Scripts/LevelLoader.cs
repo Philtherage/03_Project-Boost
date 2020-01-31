@@ -29,7 +29,19 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadDelay()
     {
+        if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            
+            yield return new WaitForSeconds(levelLoadDelay);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         yield return new WaitForSeconds(levelLoadDelay);
+       
         SceneManager.LoadScene(currentSceneIndex += 1);
+    }
+
+    public void LoadLevelOne()
+    {
+        SceneManager.LoadScene("Level 1");
     }
 }

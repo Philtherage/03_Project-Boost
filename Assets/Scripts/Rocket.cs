@@ -48,6 +48,7 @@ public class Rocket : MonoBehaviour
                 break;
             
             default:
+                FindObjectOfType<LevelLoader>().LoadLevelOne();
                 Debug.Log("Dead");
                 break;
         }
