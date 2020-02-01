@@ -40,3 +40,5 @@
 
 * Section 3: 62. Protecting Against NaN.
 
+* Section 3: 64. Light Your Scene.
+

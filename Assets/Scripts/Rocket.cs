@@ -6,9 +6,11 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float thrusterForce = 1f;
     [SerializeField] float rotateForce = 1f;
+
     [SerializeField] AudioClip mainEngineSFX;
     [SerializeField] AudioClip deathSFX;
     [SerializeField] AudioClip levelFinishSFX;
+
     [SerializeField] ParticleSystem deathVFX;
     [SerializeField] ParticleSystem levelFinishVFX;
     [SerializeField] ParticleSystem rocketJetVFX;
