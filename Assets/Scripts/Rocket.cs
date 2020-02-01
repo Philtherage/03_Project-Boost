@@ -6,39 +6,36 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float thrusterForce = 1f;
     [SerializeField] float rotateForce = 1f;
-
+    [SerializeField] AudioClip mainEngineSFX;
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField] AudioClip levelFinishSFX;
    
     const string COLLISION_TAG_FRIENDLY = "Friendly";
     const string COLLISION_TAG_FUEL = "Fuel";
     const string COLLISION_TAG_FINISH = "Finish";
 
-    bool isThrusting;
     bool isDead;
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
 
     Rigidbody rigidBody;
-    AudioSource rocketThrustSFX;
-
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         isDead = false;
         rigidBody = GetComponent<Rigidbody>();
-        rocketThrustSFX = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if(state == State.Alive)
-        {
-            
+        {          
             Rotate();
-            Thrust();
-            PlayThrustSFX();
-
-        }
+            Thrust();            
+        }   
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -55,19 +52,31 @@ public class Rocket : MonoBehaviour
                 Debug.Log("Fuel");
                 break;
             case COLLISION_TAG_FINISH:
-                state = State.Transcending;
-                StartCoroutine(FindObjectOfType<LevelLoader>().LoadDelay(isDead));
+                LevelWon();
                 break;
             
             default:
-                state = State.Dying;
-                isDead = true;
-                rocketThrustSFX.Stop();
-                StartCoroutine(FindObjectOfType<LevelLoader>().LoadDelay(isDead));                
-                Debug.Log("Dead");
+                Dying();           
                 break;
                 
         }
+    }
+
+    private void LevelWon()
+    {
+        state = State.Transcending;
+        audioSource.Stop();
+        audioSource.PlayOneShot(levelFinishSFX);
+        StartCoroutine(FindObjectOfType<LevelLoader>().LoadDelay(isDead));
+    }
+
+    private void Dying()
+    {
+        audioSource.Stop();
+        state = State.Dying;
+        isDead = true;
+        audioSource.PlayOneShot(deathSFX);
+        StartCoroutine(FindObjectOfType<LevelLoader>().LoadDelay(isDead));
     }
 
     private void Rotate()
@@ -92,27 +101,16 @@ public class Rocket : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rigidBody.AddRelativeForce(Vector3.up * thrusterForce);
-            isThrusting = true;
+            
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(mainEngineSFX);
+            }           
         }
         else
         {
-            isThrusting = false;
+            audioSource.Stop();
         }
     }
-
-    private void PlayThrustSFX()
-    {
-        if(state != State.Alive) { return; }
-        if (isThrusting)
-        {
-            if (!rocketThrustSFX.isPlaying) 
-            { 
-                rocketThrustSFX.Play();
-            }
-        }
-        else
-        {
-            rocketThrustSFX.Stop();
-        }
-    }
+    
 }

@@ -155,9 +155,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6b8ad844d0b74b74ca4b2ded4427c89a, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.831
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -255,6 +255,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrusterForce: 15
   rotateForce: 100
+  mainEngineSFX: {fileID: 8300000, guid: 9425fc888f9a5d04891fec402ee2d9ee, type: 3}
+  deathSFX: {fileID: 8300000, guid: 3a10cce8c93ff6f488a463be01cc0cfd, type: 3}
+  levelFinishSFX: {fileID: 8300000, guid: c43f7058b5f4bd446832c8e34fc8549d, type: 3}
 --- !u!1 &3874287735187292302
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,3 +29,5 @@
 * Section 3: 55. Level Loading & Scene Management.
 
 * Section 3: 56. Invoke() As a Coroutine Warm-up.
+
+* Section 3: 58. Playing Multiple Audio Clips.
