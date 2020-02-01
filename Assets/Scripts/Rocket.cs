@@ -31,6 +31,7 @@ public class Rocket : MonoBehaviour
         isDead = false;
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -40,12 +41,14 @@ public class Rocket : MonoBehaviour
         {          
             Rotate();
             Thrust();            
-        }   
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(state != State.Alive) { return; }
+        if (!FindObjectOfType<DebugSettings>()) { return; }
+        if(FindObjectOfType<DebugSettings>().GetCollisionOff()) { return; }
 
         switch (collision.gameObject.tag)
         {

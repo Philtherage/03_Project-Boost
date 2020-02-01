@@ -45,3 +45,5 @@
 * Section 3: 65. Nested Prefab Joy.
 
 * Section 3: 66. Make Game Moments.
+
+* Section 3: 67. Debug Keys & Builds. (Added a DebugSettings script and made a debugtool prefab)

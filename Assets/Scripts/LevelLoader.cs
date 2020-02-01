@@ -16,6 +16,11 @@ public class LevelLoader : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex; 
     }
 
+    private void Update()
+    {
+        DebugLoadNextLevel();
+    }
+
     public IEnumerator LoadDelay(bool isDead)
     {
         if (isDead)
@@ -26,13 +31,33 @@ public class LevelLoader : MonoBehaviour
 
         if (currentSceneIndex == (SceneManager.sceneCountInBuildSettings - 1))
         {
-            
             yield return new WaitForSeconds(levelLoadDelay);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         yield return new WaitForSeconds(levelLoadDelay);
-       
+
         SceneManager.LoadScene(currentSceneIndex += 1);
+    }
+
+    private void DebugLoadNextLevel()
+    {
+        if (!FindObjectOfType<DebugSettings>()) { return; }
+
+        if (FindObjectOfType<DebugSettings>().GetLoadNextLevel())
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                if (currentSceneIndex == (SceneManager.sceneCountInBuildSettings - 1))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
+                else
+                {
+                    SceneManager.LoadScene(currentSceneIndex += 1);
+                }
+            }
+            
+        }
     }
 
 }
