@@ -16,20 +16,15 @@ public class LevelLoader : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex; 
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator LoadDelay(bool isDead)
     {
-        
-    }
+        if (isDead)
+        {
+            yield return new WaitForSeconds(levelLoadDelay);
+            SceneManager.LoadScene(0);
+        }
 
-    public void LoadNextScene()
-    {
-        StartCoroutine(LoadDelay());
-    }
-
-    IEnumerator LoadDelay()
-    {
-        if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1)
+        if (currentSceneIndex == (SceneManager.sceneCountInBuildSettings - 1))
         {
             
             yield return new WaitForSeconds(levelLoadDelay);
@@ -40,8 +35,4 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex += 1);
     }
 
-    public void LoadLevelOne()
-    {
-        SceneManager.LoadScene("Level 1");
-    }
 }

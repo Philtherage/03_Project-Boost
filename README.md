@@ -27,3 +27,5 @@
 * Section 3: 54. Prefabs in Detail. (changed my collision check for finish level to the rocket, so finshlevel script was obsolete).
 
 * Section 3: 55. Level Loading & Scene Management.
+
+* Section 3: 56. Invoke() As a Coroutine Warm-up.

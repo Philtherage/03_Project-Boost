@@ -13,6 +13,9 @@ public class Rocket : MonoBehaviour
     const string COLLISION_TAG_FINISH = "Finish";
 
     bool isThrusting;
+    bool isDead;
+    enum State { Alive, Dying, Transcending }
+    State state = State.Alive;
 
     Rigidbody rigidBody;
     AudioSource rocketThrustSFX;
@@ -20,6 +23,7 @@ public class Rocket : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         rigidBody = GetComponent<Rigidbody>();
         rocketThrustSFX = GetComponent<AudioSource>();
     }
@@ -27,30 +31,42 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rotate();
-        Thrust();
-        PlayThrustSFX();
+        if(state == State.Alive)
+        {
+            
+            Rotate();
+            Thrust();
+            PlayThrustSFX();
+
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(state != State.Alive) { return; }
+
         switch (collision.gameObject.tag)
         {
             case COLLISION_TAG_FRIENDLY:
-                Debug.Log("Ok");
+                state = State.Alive;
                 break;
 
             case COLLISION_TAG_FUEL:
                 Debug.Log("Fuel");
                 break;
             case COLLISION_TAG_FINISH:
-                FindObjectOfType<LevelLoader>().LoadNextScene();
+                state = State.Transcending;
+                StartCoroutine(FindObjectOfType<LevelLoader>().LoadDelay(isDead));
                 break;
             
             default:
-                FindObjectOfType<LevelLoader>().LoadLevelOne();
+                state = State.Dying;
+                isDead = true;
+                rocketThrustSFX.Stop();
+                StartCoroutine(FindObjectOfType<LevelLoader>().LoadDelay(isDead));                
                 Debug.Log("Dead");
                 break;
+                
         }
     }
 
@@ -86,6 +102,7 @@ public class Rocket : MonoBehaviour
 
     private void PlayThrustSFX()
     {
+        if(state != State.Alive) { return; }
         if (isThrusting)
         {
             if (!rocketThrustSFX.isPlaying) 
