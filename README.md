@@ -42,3 +42,5 @@
 
 * Section 3: 64. Light Your Scene.
 
+* Section 3: 65. Nested Prefab Joy.
+

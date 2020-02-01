@@ -104,22 +104,26 @@ public class Rocket : MonoBehaviour
     }
 
     private void Thrust()
-    {
+    {       
         if (Input.GetKey(KeyCode.Space))
         {
             rigidBody.AddRelativeForce(Vector3.up * thrusterForce);
             
+
             if (!audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(mainEngineSFX);
                 rocketJetVFX.Play();
-            }           
+
+            }
+
         }
         else
         {
             audioSource.Stop();
             rocketJetVFX.Stop();
         }
+
     }
     
 }
