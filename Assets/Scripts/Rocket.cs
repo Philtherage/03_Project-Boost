@@ -20,8 +20,7 @@ public class Rocket : MonoBehaviour
     const string COLLISION_TAG_FINISH = "Finish";
 
     bool isDead;
-    enum State { Alive, Dying, Transcending }
-    State state = State.Alive;
+    bool isTranstioning = false;
 
     Rigidbody rigidBody;
     AudioSource audioSource;
@@ -37,7 +36,7 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(state == State.Alive)
+        if(!isTranstioning)
         {          
             Rotate();
             Thrust();            
@@ -46,14 +45,13 @@ public class Rocket : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(state != State.Alive) { return; }
+        if(isTranstioning) { return; }
         if (!FindObjectOfType<DebugSettings>()) { return; }
         if(FindObjectOfType<DebugSettings>().GetCollisionOff()) { return; }
 
         switch (collision.gameObject.tag)
         {
             case COLLISION_TAG_FRIENDLY:
-                state = State.Alive;
                 break;
 
             case COLLISION_TAG_FUEL:
@@ -72,7 +70,7 @@ public class Rocket : MonoBehaviour
 
     private void LevelWon()
     {
-        state = State.Transcending;
+        isTranstioning = true;
         audioSource.Stop();
         levelFinishVFX.Play();
         audioSource.PlayOneShot(levelFinishSFX);
@@ -82,7 +80,7 @@ public class Rocket : MonoBehaviour
     private void Dying()
     {
         audioSource.Stop();
-        state = State.Dying;
+        isTranstioning = true;
         isDead = true;
         deathVFX.Play();
         audioSource.PlayOneShot(deathSFX);
@@ -91,18 +89,22 @@ public class Rocket : MonoBehaviour
 
     private void Rotate()
     {
-        rigidBody.freezeRotation = true; // take manual control of rotation
-
+       
         if (Input.GetKey(KeyCode.A))
         {
-
-            transform.Rotate(Vector3.forward, rotateForce * Time.deltaTime);
+            RotateManually(rotateForce);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.forward, -rotateForce * Time.deltaTime);
-
+            RotateManually(-rotateForce);
         }
+        
+    }
+
+    private void RotateManually(float rotateForce)
+    {
+        rigidBody.freezeRotation = true; // take manual control of rotation
+        transform.Rotate(Vector3.forward, rotateForce * Time.deltaTime);
         rigidBody.freezeRotation = false; // resume physics control of rotation
     }
 
@@ -123,10 +125,14 @@ public class Rocket : MonoBehaviour
         }
         else
         {
-            audioSource.Stop();
-            rocketJetVFX.Stop();
+            StopThrusting();
         }
 
     }
-    
+
+    private void StopThrusting()
+    {
+        audioSource.Stop();
+        rocketJetVFX.Stop();
+    }
 }

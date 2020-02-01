@@ -32,10 +32,10 @@ public class LevelLoader : MonoBehaviour
         if (currentSceneIndex == (SceneManager.sceneCountInBuildSettings - 1))
         {
             yield return new WaitForSeconds(levelLoadDelay);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(0);
         }
-        yield return new WaitForSeconds(levelLoadDelay);
 
+        yield return new WaitForSeconds(levelLoadDelay);
         SceneManager.LoadScene(currentSceneIndex += 1);
     }
 

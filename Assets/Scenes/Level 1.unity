@@ -890,7 +890,7 @@ PrefabInstance:
     - target: {fileID: 14993031864764486, guid: a48064cac8b8602489c9aa2ac0a5d25d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 20.244518
+      value: 65.63475
       objectReference: {fileID: 0}
     - target: {fileID: 14993031864764486, guid: a48064cac8b8602489c9aa2ac0a5d25d,
         type: 3}
@@ -2562,6 +2562,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Directional Light
       objectReference: {fileID: 0}
+    - target: {fileID: 246288915343495996, guid: 09d781b25f3c6804dbd12b836f929931,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 246288915343495998, guid: 09d781b25f3c6804dbd12b836f929931,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2787,17 +2792,17 @@ PrefabInstance:
     - target: {fileID: 5576121041259496115, guid: 8f665a7cd5531ed4a8b6021f709d80ad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.21
+      value: -4.53
       objectReference: {fileID: 0}
     - target: {fileID: 5576121041259496115, guid: 8f665a7cd5531ed4a8b6021f709d80ad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.07
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: 5576121041259496115, guid: 8f665a7cd5531ed4a8b6021f709d80ad,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.82
+      value: -25.57
       objectReference: {fileID: 0}
     - target: {fileID: 5576121041259496115, guid: 8f665a7cd5531ed4a8b6021f709d80ad,
         type: 3}

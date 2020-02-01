@@ -46,4 +46,6 @@
 
 * Section 3: 66. Make Game Moments.
 
-* Section 3: 67. Debug Keys & Builds. (Added a DebugSettings script and made a debugtool prefab)
+* Section 3: 67. Debug Keys & Builds. (Added a DebugSettings script and made a debugtool prefab).
+
+* Section 3: 68. Spit & Polish.
