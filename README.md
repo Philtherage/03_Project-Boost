@@ -33,3 +33,8 @@
 * Section 3: 58. Playing Multiple Audio Clips.
 
 * Section 3: 59. Introducing Particle Effects.
+
+* Section 3: 60. Moving Platform Pattern.
+
+* Section 3: 61. Mathf.Sin() For Movement Cycles.
+
