@@ -38,3 +38,5 @@
 
 * Section 3: 61. Mathf.Sin() For Movement Cycles.
 
+* Section 3: 62. Protecting Against NaN.
+
