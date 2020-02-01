@@ -9,6 +9,9 @@ public class Rocket : MonoBehaviour
     [SerializeField] AudioClip mainEngineSFX;
     [SerializeField] AudioClip deathSFX;
     [SerializeField] AudioClip levelFinishSFX;
+    [SerializeField] ParticleSystem deathVFX;
+    [SerializeField] ParticleSystem levelFinishVFX;
+    [SerializeField] ParticleSystem rocketJetVFX;
    
     const string COLLISION_TAG_FRIENDLY = "Friendly";
     const string COLLISION_TAG_FUEL = "Fuel";
@@ -66,6 +69,7 @@ public class Rocket : MonoBehaviour
     {
         state = State.Transcending;
         audioSource.Stop();
+        levelFinishVFX.Play();
         audioSource.PlayOneShot(levelFinishSFX);
         StartCoroutine(FindObjectOfType<LevelLoader>().LoadDelay(isDead));
     }
@@ -75,6 +79,7 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         state = State.Dying;
         isDead = true;
+        deathVFX.Play();
         audioSource.PlayOneShot(deathSFX);
         StartCoroutine(FindObjectOfType<LevelLoader>().LoadDelay(isDead));
     }
@@ -105,11 +110,13 @@ public class Rocket : MonoBehaviour
             if (!audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(mainEngineSFX);
+                rocketJetVFX.Play();
             }           
         }
         else
         {
             audioSource.Stop();
+            rocketJetVFX.Stop();
         }
     }
     

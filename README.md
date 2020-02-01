@@ -31,3 +31,5 @@
 * Section 3: 56. Invoke() As a Coroutine Warm-up.
 
 * Section 3: 58. Playing Multiple Audio Clips.
+
+* Section 3: 59. Introducing Particle Effects.
